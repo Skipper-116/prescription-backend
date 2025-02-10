@@ -85,7 +85,6 @@ medications = {
 }
 
 medications.each_pair do |medication_name, dosages|
-  puts "Creating #{medication_name}... #{dosages}"
   dosages.each do |dosage|
     medication = Medication.find_or_create_by!(name: medication_name.to_s, unit_price: dosage[:unit_price])
     frequency_type = FrequencyType.find_by(name: dosage[:frequency])
