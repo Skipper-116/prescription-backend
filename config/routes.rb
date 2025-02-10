@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :prescription_dosages
+  resources :prescriptions
   resources :dosages
   resources :medications
   resources :frequency_types
