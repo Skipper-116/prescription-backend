@@ -2,6 +2,12 @@
 
 This is a Ruby on Rails API-only application using PostgreSQL.
 
+## Versions
+
+1. Ruby 3.4.0
+2. Rails 8.0.1
+3. PostgreSQL 17
+
 ## Setup
 
 1. Clone the repository:
