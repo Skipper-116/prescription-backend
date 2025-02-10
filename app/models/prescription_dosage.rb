@@ -10,7 +10,7 @@ class PrescriptionDosage < ApplicationRecord
 
   def as_json(options = {})
     super(options.merge(
-      only: [ :id, :dosage_id, :prescription_id ],
+      only: [ :id, :dosage_id, :prescription_id, :duration ],
       methods: [ :dosage, :prescription ]
     ))
   end
