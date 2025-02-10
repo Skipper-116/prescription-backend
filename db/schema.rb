@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_10_182309) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_10_190830) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -51,7 +51,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_10_182309) do
     t.date "voded_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "prescription_id", null: false
     t.index ["dosage_id"], name: "index_prescription_dosages_on_dosage_id"
+    t.index ["prescription_id"], name: "index_prescription_dosages_on_prescription_id"
   end
 
   create_table "prescriptions", force: :cascade do |t|
@@ -65,4 +67,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_10_182309) do
   add_foreign_key "dosages", "frequency_types"
   add_foreign_key "dosages", "medications"
   add_foreign_key "prescription_dosages", "dosages"
+  add_foreign_key "prescription_dosages", "prescriptions"
 end
