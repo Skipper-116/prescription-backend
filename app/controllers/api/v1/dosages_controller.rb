@@ -1,4 +1,4 @@
-class DosagesController < ApplicationController
+class Api::V1::DosagesController < ApplicationController
   before_action :set_dosage, only: %i[ show update destroy ]
 
   # GET /dosages

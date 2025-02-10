@@ -1,4 +1,4 @@
-class FrequencyTypesController < ApplicationController
+class Api::V1::FrequencyTypesController < ApplicationController
   before_action :set_frequency_type, only: %i[ show update destroy ]
 
   # GET /frequency_types

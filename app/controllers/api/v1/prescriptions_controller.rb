@@ -1,4 +1,4 @@
-class PrescriptionsController < ApplicationController
+class Api::V1::PrescriptionsController < ApplicationController
   before_action :set_prescription, only: %i[ show update destroy ]
 
   # GET /prescriptions
