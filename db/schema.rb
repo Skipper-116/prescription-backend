@@ -27,9 +27,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_10_190830) do
   end
 
   create_table "frequency_types", force: :cascade do |t|
-    t.string "name"
-    t.float "multiplier"
-    t.boolean "voided"
+    t.string "name", null: false
+    t.float "multiplier", null: false
+    t.boolean "voided", default: false
     t.date "voided_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_10_190830) do
 
   create_table "medications", force: :cascade do |t|
     t.string "name"
-    t.boolean "voided"
+    t.boolean "voided", default: false
     t.date "voided_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

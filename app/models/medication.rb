@@ -8,6 +8,6 @@ class Medication < ApplicationRecord
   validates :unit_price, presence: true
 
   def as_json(options = {})
-    super(options.merge(only: [ :id, :name, :unit_price ]))
+    super(options.merge(only: [ :id, :name, :unit_price, :voided ]))
   end
 end

@@ -6,6 +6,8 @@ class CreateDosages < ActiveRecord::Migration[8.0]
       t.float :amount
       t.string :unit
       t.integer :default_duration
+      t.boolean :voided, default: false
+      t.date :voided_date, default: nil
 
       t.timestamps
     end

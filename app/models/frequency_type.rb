@@ -8,6 +8,6 @@ class FrequencyType < ApplicationRecord
   validates :multiplier, presence: true
 
   def as_json(options = {})
-    super(options.merge(only: [ :id, :name, :multiplier ]))
+    super(options.merge(only: [ :id, :name, :multiplier, :voided ]))
   end
 end
