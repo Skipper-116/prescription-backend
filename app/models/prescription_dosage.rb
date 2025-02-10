@@ -10,8 +10,24 @@ class PrescriptionDosage < ApplicationRecord
 
   def as_json(options = {})
     super(options.merge(
-      only: [ :id, :dosage_id, :prescription_id, :duration ],
-      methods: [ :dosage, :prescription ]
+      only: [ :id, :dosage_id, :duration, :voided, :updated_at, :prescription_id ],
+      methods: [ :medication_name, :dosage_amount, :dosage_unit, :frequency_name ]
     ))
+  end
+
+  def medication_name
+    dosage.medication.name
+  end
+
+  def dosage_amount
+    dosage.amount
+  end
+
+  def dosage_unit
+    dosage.unit
+  end
+
+  def frequency_name
+    dosage.frequency_type.name
   end
 end

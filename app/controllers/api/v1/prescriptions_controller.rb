@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::V1::PrescriptionsController < ApplicationController
   before_action :set_prescription, only: %i[ show update destroy ]
 
@@ -15,13 +17,12 @@ class Api::V1::PrescriptionsController < ApplicationController
 
   # POST /prescriptions
   def create
-    @prescription = Prescription.new(prescription_params)
-
-    if @prescription.save
-      render json: @prescription, status: :created, location: @prescription
-    else
-      render json: @prescription.errors, status: :unprocessable_entity
-    end
+    params_to_process = prescription_params
+    puts "params_to_process: #{params_to_process}"
+    @result = service.create_prescription(params_to_process)
+    render json: @result, status: :created
+  rescue StandardError => e
+    render json: { error: e.message }, status: :unprocessable_entity
   end
 
   # PATCH/PUT /prescriptions/1
@@ -41,11 +42,15 @@ class Api::V1::PrescriptionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_prescription
-      @prescription = Prescription.find(params.expect(:id))
+      @prescription = Prescription.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def prescription_params
-      params.expect(prescription: [ :amount, :voided, :voided_date ])
+      params.permit(:amount, prescription_dosages: [ :dosage_id, :duration ])
+    end
+
+    def service
+      PrescriptionService.new
     end
 end
