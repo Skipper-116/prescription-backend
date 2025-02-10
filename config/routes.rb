@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :dosages
   resources :medications
   resources :frequency_types
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
