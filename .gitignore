@@ -34,3 +34,6 @@
 vendor
 node_modules
 Gemfile.lock
+
+# Database config
+/config/database.yml
